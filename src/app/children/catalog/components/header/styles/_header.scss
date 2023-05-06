@@ -1,0 +1,37 @@
+.header {
+    font-weight: 700;
+    font-size: 18px;
+    padding: 20px 40px;
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__logo {
+        margin-right: auto;
+    }
+
+    &__nav {
+        margin-right: 48px;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__nav-item:not(:last-child) {
+        margin-right: 48px;
+    }
+
+    &__form {
+        min-width: 300px;
+        margin-right: 48px;
+    }
+
+    &__cart-title {
+        margin-right: 2px;
+    }
+}

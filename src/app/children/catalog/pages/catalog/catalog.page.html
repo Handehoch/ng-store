@@ -1,0 +1,7 @@
+<ng-container *ngIf="products$">
+    <div *ngFor="let product of products$ | async">
+        {{ product.title }}
+        {{ product.description }}
+    </div>
+
+</ng-container>
