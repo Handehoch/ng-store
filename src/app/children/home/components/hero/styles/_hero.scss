@@ -1,0 +1,34 @@
+.hero {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        padding: 15px 0;
+        justify-content: center;
+    }
+
+    &__container--bg {
+        min-height: 626px;
+        background-image: url("https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e58c0997219ec01eb6_background-bg-min.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    &__info {
+        padding: 20px 60px 20px 20%;
+        width: 1000px;
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 58px;
+        margin-bottom: 48px;
+        line-height: 3rem;
+    }
+
+    &__description {
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 70px;
+    }
+}

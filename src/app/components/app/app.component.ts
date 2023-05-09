@@ -9,8 +9,17 @@ import { ITab } from '../../interfaces/tab.interface';
 export class AppComponent {
     protected readonly tabs: ITab[] = [
         {
+            name: 'home',
+            routerLink: 'home',
+        },
+        {
+            name: 'catalog',
+            routerLink: 'catalog',
+        },
+        {
             name: 'categories',
-            routerLink: 'categories',
+            routerLink: 'home',
+            fragment: 'categories',
         },
         {
             name: "what's new",

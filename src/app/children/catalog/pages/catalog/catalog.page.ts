@@ -1,7 +1,14 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ProductsRequestService } from '../../services/products-request/products-request.service';
-import { Observable } from 'rxjs';
+import { forkJoin, map, Observable, take } from 'rxjs';
 import { IProduct } from '../../interfaces/product.interface';
+import { Location } from '@angular/common';
+import { ProductsFilterViewModel } from '../../view-models/products-filter.view-model';
+
+interface ICatalogData {
+    products: IProduct[];
+    categories: string[];
+}
 
 @Component({
     templateUrl: './catalog.page.html',
@@ -9,17 +16,27 @@ import { IProduct } from '../../interfaces/product.interface';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CatalogPage implements OnInit {
-    protected products$!: Observable<IProduct[]>;
+    protected catalogData$!: Observable<ICatalogData>;
+    protected productsFilterVM: ProductsFilterViewModel;
 
     constructor(
-        private readonly _goodsRequestService: ProductsRequestService
-    ) {}
-
-    public ngOnInit(): void {
-        this.getProducts();
+        private readonly _location: Location,
+        private readonly _productsRequestService: ProductsRequestService
+    ) {
+        this.productsFilterVM = new ProductsFilterViewModel();
     }
 
-    private getProducts(): void {
-        this.products$ = this._goodsRequestService.getProducts();
+    public ngOnInit(): void {
+        this.catalogData$ = forkJoin(
+            this._productsRequestService.getProducts().pipe(take(1)),
+            this._productsRequestService.getProductCategories().pipe(take(1))
+        ).pipe(
+            map(([products, categories]: [IProduct[], string[]]) => {
+                return {
+                    products,
+                    categories,
+                } as ICatalogData;
+            })
+        );
     }
 }

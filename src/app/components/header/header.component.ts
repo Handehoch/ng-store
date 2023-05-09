@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ITab } from '../../../../interfaces/tab.interface';
+import { ITab } from '../../interfaces/tab.interface';
 import { FormControl, FormGroup } from '@angular/forms';
+import { CartService } from '../../services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-header',
@@ -17,20 +18,26 @@ export class HeaderComponent {
 
     constructor(
         private readonly _router: Router,
-        private readonly _route: ActivatedRoute
+        protected readonly cartService: CartService
     ) {
         this.formGroup = new FormGroup({
             searchInput: new FormControl(''),
         });
     }
-
     public navigateToTab(tab: ITab): void {
+        if (!tab.fragment) {
+            this._router.navigate([`${tab.routerLink}`]);
+
+            return;
+        }
+
         this._router.navigate([`${tab.routerLink}`], {
-            relativeTo: this._route,
+            fragment: tab.fragment,
         });
     }
 
-    public handleSearch(): void {
-        console.log(this.formGroup.get('searchInput')?.value);
+    protected isTabActive(tab: ITab): boolean {
+        const path: string = document.location.href.split('/').pop() ?? '';
+        return path.split('#').pop()?.includes(tab.name) ?? false;
     }
 }

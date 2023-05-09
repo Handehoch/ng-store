@@ -1,0 +1,18 @@
+<div class="home">
+    <app-hero class="home__hero"></app-hero>
+    <div *ngIf="products$ | async as products">
+        <app-products-list class="home__products-list"
+            title="Shop our top products"
+            [products]="products"
+        >
+        </app-products-list>
+    </div>
+    <div id="categories" *ngIf="categories$ | async as categories">
+        <app-categories-list
+            [title]="'Shop our top categories'"
+            [appearance]="'small'"
+            [categories]="categories"
+        >
+        </app-categories-list>
+    </div>
+</div>

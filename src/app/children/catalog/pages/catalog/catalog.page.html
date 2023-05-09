@@ -1,7 +1,19 @@
-<ng-container *ngIf="products$">
-    <div *ngFor="let product of products$ | async">
-        {{ product.title }}
-        {{ product.description }}
+<div class="catalog">
+    <div class="container-fluid catalog__container" *ngIf="catalogData$ | async as catalogData">
+        <aside class="catalog__filter-bar">
+            <app-products-filter
+                [model]="productsFilterVM"
+                [categories]="catalogData.categories"
+            >
+            </app-products-filter>
+        </aside>
+        <div class="catalog__products">
+            <app-products-list class="catalog__products-list"
+                title="Products"
+                [products]="catalogData.products"
+                [model]="productsFilterVM"
+            >
+            </app-products-list>
+        </div>
     </div>
-
-</ng-container>
+</div>

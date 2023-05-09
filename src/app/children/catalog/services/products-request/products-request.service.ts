@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { IProduct } from '../../interfaces/product.interface';
 import { ProductsRequestQueryType } from './types/products-request-query.type';
 
@@ -14,10 +14,10 @@ export class ProductsRequestService {
     public getProducts(
         query?: ProductsRequestQueryType
     ): Observable<IProduct[]> {
-        const params: HttpParams = new HttpParams();
+        const params: ProductsRequestQueryType = {};
 
         if (query?.limit) {
-            params.set('limit', query.limit);
+            params['limit'] = query.limit;
         }
 
         return this._http.get<IProduct[]>(`${this._apiUrl}/products`, {
@@ -33,7 +33,7 @@ export class ProductsRequestService {
     }
 
     public getProductCategories(): Observable<string[]> {
-        return this._http.get<string[]>(`${this._apiUrl}/categories`, {
+        return this._http.get<string[]>(`${this._apiUrl}/products/categories`, {
             responseType: 'json',
         });
     }

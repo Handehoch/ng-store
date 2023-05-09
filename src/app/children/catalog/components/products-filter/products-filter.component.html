@@ -1,0 +1,37 @@
+<div class="products-filter">
+    <div class="products-filter__container">
+        <form class="products-filter__form" [formGroup]="model.formGroup">
+            <tui-input class="products-filter__control" formControlName="searchText"
+                [tuiTextfieldSize]="'s'"
+            >
+                Search
+                <input tuiTextfield type="text" />
+            </tui-input>
+            <tui-multi-select class="products-filter__control"
+                formControlName="categorySelect"
+                [tuiTextfieldSize]="'s'"
+            >
+                <tui-data-list-wrapper
+                    *tuiDataList
+                    tuiMultiSelectGroup
+                    [items]="categories"
+                >
+                </tui-data-list-wrapper>
+            </tui-multi-select>
+            <tui-checkbox-labeled class="products-filter__control"
+                formControlName="priceCheckbox">
+                Сортировать по цене
+            </tui-checkbox-labeled>
+            <tui-checkbox-labeled class="products-filter__control"
+                formControlName="nameCheckbox"
+            >
+                Сортировать по названию
+            </tui-checkbox-labeled>
+            <tui-checkbox-labeled class="products-filter__control"
+                formControlName="favouriteCheckbox"
+            >
+                Избарнные товары
+            </tui-checkbox-labeled>
+        </form>
+    </div>
+</div>

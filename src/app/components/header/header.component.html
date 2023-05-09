@@ -3,24 +3,23 @@
         <img src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e86ab4c21faa7bc0bd90dd_Logo.svg" alt="" class="header__logo">
         <nav class="header__nav">
             <ul class="header__list">
-                <li class="header__nav-item" *ngFor="let tab of tabs" (click)="navigateToTab(tab)">
+                <li class="header__nav-item" *ngFor="let tab of tabs"
+                    (click)="navigateToTab(tab)"
+                    [ngClass]="{'is-active-tab': isTabActive(tab)}"
+                >
                     {{ tab.name | titlecase }}
                 </li>
             </ul>
         </nav>
-        <form class="header__form" [formGroup]="formGroup">
-            <tui-input class="header__tui-input"
-                [tuiTextfieldSize]="'m'"
-                [tuiTextfieldIcon]="'tuiIconSearch'"
-                formControlName="searchInput">
-                Search products...
-                <input class="header__input" type="text" tuiTextfield (change)="handleSearch()">
-            </tui-input>
-        </form>
         <div class="header__cart-container">
-            <div class="cart">
+            <div class="header__cart">
                 <span class="header__cart-title">Корзина</span>
                 <tui-svg class="header__svg-cart" [src]="'tuiIconShoppingCart'"></tui-svg>
+                <div class="header__cart-amount">
+                    <div class="header__cart-number">
+                        {{ cartService.productsAmount$ | async }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
