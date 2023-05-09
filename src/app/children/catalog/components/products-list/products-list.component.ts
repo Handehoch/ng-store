@@ -75,7 +75,6 @@ export class ProductsListComponent implements OnChanges {
         }
 
         if (filter.name) {
-            debugger;
             filteredProducts = filteredProducts.filter((product: IProduct) => {
                 return product.title
                     .toLowerCase()
