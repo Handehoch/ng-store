@@ -32,10 +32,7 @@ export class CatalogPage implements OnInit {
             this._productsRequestService.getProductCategories().pipe(take(1))
         ).pipe(
             map(([products, categories]: [IProduct[], string[]]) => {
-                return {
-                    products,
-                    categories,
-                } as ICatalogData;
+                return { products, categories };
             })
         );
     }

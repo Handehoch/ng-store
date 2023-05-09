@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { ITab } from '../../interfaces/tab.interface';
 
+/**
+ *  @todo
+ *
+ */
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',

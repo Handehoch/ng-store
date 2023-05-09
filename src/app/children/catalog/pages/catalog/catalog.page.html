@@ -1,5 +1,5 @@
 <div class="catalog">
-    <div class="container-fluid catalog__container" *ngIf="catalogData$ | async as catalogData">
+    <div class="container-fluid catalog__container" *ngIf="catalogData$ | async as catalogData else loader">
         <aside class="catalog__filter-bar">
             <app-products-filter
                 [model]="productsFilterVM"
@@ -17,3 +17,8 @@
         </div>
     </div>
 </div>
+
+
+<ng-template #loader>
+    <div class="loader"></div>
+</ng-template>
