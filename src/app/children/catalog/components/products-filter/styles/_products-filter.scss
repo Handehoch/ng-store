@@ -1,4 +1,9 @@
 .products-filter {
+    &__title {
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
     &__control {
         margin-bottom: 15px;
     }

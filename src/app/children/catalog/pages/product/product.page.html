@@ -1,0 +1,72 @@
+<div class="product" *ngIf="product$ | async as product else loader">
+    <div class="container product__container">
+        <img class="product__image" [src]="product.image" alt="">
+        <div class="product__info">
+            <div class="product__info-block">
+                <h2 class="product__title">{{ product.title }}</h2>
+                <p #description class="product__description">{{ product.description | cutter:100 }}...</p>
+                <p class="product__rating">
+                    <span class="product__rate">Rating: <b>{{ product.rating.rate }} </b></span>
+                    <span class="product__count">({{ product.rating.count }})</span>
+                </p>
+                <button class="product__show-description-button"
+                    tuiButton
+                    [size]="'s'"
+                    (click)="toggleDescription(product)"
+                >
+                    {{ resizeButtonTitle$ | async }}
+                </button>
+            </div>
+            <div class="product__info-block">
+                <div class="product__price">{{ product.price.toFixed(2) }} $</div>
+            </div>
+            <div class="product__info-block product__info-block--buttons">
+                <button class="product__show-description-button"
+                    tuiButton
+                    [size]="'m'"
+                    (click)="showModal()"
+                >
+                    Купить сейчас
+                </button>
+                <button class="product__show-description-button"
+                    tuiButton
+                    [size]="'m'"
+                    (click)="addToCart(product)"
+                >
+                    Добавить в корзину
+                </button>
+            </div>
+            <div class="product__add-info">
+                <div class="product__advantage">
+                    <div class="product__subtitle">
+                        <tui-svg class="product__icon" [src]="'tuiIconCreditCardLarge'"></tui-svg>
+                        <h3 class="product__text">Бесплатная доставка</h3>
+                    </div>
+                    <p class="product__advantage-info">
+                        Не забудьте ввести почтовый индекс
+                    </p>
+                </div>
+                <div class="product__advantage">
+                    <div class="product__subtitle">
+                        <tui-svg class="product__icon" [src]="'tuiIconInboxLarge'"></tui-svg>
+                        <h3 class="product__text">Возврат посылки</h3>
+                    </div>
+                    <p class="product__advantage-info">
+                        Беслптный возврат посылки в течение 30 дней
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalDialog>
+    <div class="product__modal">
+        Технические шоколадки, попробуйте в другой раз :(
+    </div>
+</ng-template>
+
+<ng-template #loader>
+    <h2 class="product__not-found-message">Продукт не найден</h2>
+    <tui-loader [showLoader]="true"></tui-loader>
+</ng-template>

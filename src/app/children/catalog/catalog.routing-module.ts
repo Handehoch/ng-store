@@ -3,11 +3,16 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { CatalogPage } from './pages/catalog/catalog.page';
 import { CatalogModule } from './catalog.module';
+import { ProductPage } from './pages/product/product.page';
 
 const routes: Routes = [
     {
-        path: '',
+        path: 'catalog',
         component: CatalogPage,
+    },
+    {
+        path: 'catalog/:id',
+        component: ProductPage,
     },
 ];
 

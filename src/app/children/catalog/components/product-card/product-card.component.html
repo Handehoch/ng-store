@@ -1,6 +1,6 @@
 <div class="product">
     <div class="product__image-container">
-        <img [src]="product.image" alt="" class="product__image">
+        <img [src]="product.image" alt="" class="product__image" (click)="navigateToProduct()">
     </div>
     <h2 class="product__title">{{ product.title | titlecase }}</h2>
     <div class="product__info">

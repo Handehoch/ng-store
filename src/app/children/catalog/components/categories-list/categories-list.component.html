@@ -1,16 +1,20 @@
 <div class="categories-list">
     <div class="container categories-list__container">
         <h2 class="subtitle categories-list__title">{{ title }}</h2>
-        <ul class="categories-list__list">
-            <li class="col-3 categories-list__item categories-list__item--bg-{{ i + 1 }}"
-                *ngFor="let category of categories; let i = index;"
-                [ngClass]="appearance === 'small' ? 'categories-list__item--small' : 'categories-list__item--large'"
-                (click)="navigateToCatalog(category)"
+        <ul class="row g-3 categories-list__list">
+            <div class="categories-list__item-wrapper"
+                 *ngFor="let category of categories; let i = index;"
+                 [ngClass]="appearance === 'small' ? 'col-3' : 'col-6'"
             >
-                <p class="categories-list__subtitle">
-                    {{ category | titlecase }}
-                </p>
-            </li>
+                <li class="categories-list__item categories-list__item--bg-{{ i + 1 }}"
+                    [ngClass]="[appearance === 'small' ? 'categories-list__item--small' : 'categories-list__item--large']"
+                    (click)="navigateToCatalog(category)"
+                >
+                    <p class="categories-list__subtitle">
+                        {{ category | titlecase }}
+                    </p>
+                </li>
+            </div>
         </ul>
     </div>
 </div>

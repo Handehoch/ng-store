@@ -1,8 +1,8 @@
 <div class="products-list">
     <div class="container products-list__container">
         <h2 class="subtitle products-list__title">{{ title | titlecase }}</h2>
-        <ul class="products__list-items row">
-            <li class="products__list-item col-3 g-5" *ngFor="let product of filterProducts()">
+        <ul class="products__list-items row g-5">
+            <li class="products__list-item col-3" *ngFor="let product of filterProducts()">
                 <app-product-card class="products-list__card" [product]="product"></app-product-card>
             </li>
         </ul>

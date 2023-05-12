@@ -10,6 +10,10 @@ interface ICatalogData {
     categories: string[];
 }
 
+type LocationCategoryState = {
+    category?: string;
+};
+
 @Component({
     templateUrl: './catalog.page.html',
     styleUrls: ['./styles/catalog.master.scss'],
@@ -27,6 +31,13 @@ export class CatalogPage implements OnInit {
     }
 
     public ngOnInit(): void {
+        const state: LocationCategoryState =
+            this._location.getState() as LocationCategoryState;
+
+        if (state.category && this.productsFilterVM.categorySelect) {
+            this.productsFilterVM.categorySelect.setValue([state.category]);
+        }
+
         this.catalogData$ = forkJoin(
             this._productsRequestService.getProducts().pipe(take(1)),
             this._productsRequestService.getProductCategories().pipe(take(1))

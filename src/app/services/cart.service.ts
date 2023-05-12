@@ -15,7 +15,12 @@ export class CartService {
     private readonly _cartProductsKey: string = 'cart';
     private _cartProducts: IProduct[] = [];
 
-    constructor(private readonly _storageService: StorageService) {}
+    constructor(private readonly _storageService: StorageService) {
+        this._cartProducts = JSON.parse(
+            this._storageService.getFromStorage(this._cartProductsKey) ?? '[]'
+        );
+        this._productsAmount$.next(this._cartProducts.length);
+    }
 
     public addToCart(product: IProduct): void {
         this._cartProducts.push(product);

@@ -1,0 +1,72 @@
+.product {
+    padding-top: 20px;
+    &__container {
+        display: flex;
+    }
+
+    &__image {
+        flex-basis: 40%;
+        max-height: 800px;
+        margin-right: 80px;
+    }
+
+    &__info {
+        flex-basis: 60%;
+    }
+
+    &__info-block {
+        border-bottom: 2px solid #e3e3e3;
+        padding-bottom: 40px;
+        margin-bottom: 40px;
+
+        &--buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    &__title {
+        font-size: 36px;
+        line-height: 1.1em;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    &__description {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+    &__rating {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    &__price {
+        font-size: 36px;
+        font-weight: 700;
+    }
+
+    &__advantage:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    &__subtitle {
+        display: flex;
+    }
+
+    &__icon {
+        margin-right: 10px;
+    }
+
+    &__text {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    &__advantage-info {
+        font-size: 16px;
+    }
+}

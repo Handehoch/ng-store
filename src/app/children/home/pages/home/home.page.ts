@@ -2,11 +2,10 @@ import {
     AfterViewInit,
     ChangeDetectionStrategy,
     Component,
-    Input,
     OnInit,
 } from '@angular/core';
 import { IProduct } from '../../../catalog/interfaces/product.interface';
-import { debounceTime, Observable, take, takeUntil, tap } from 'rxjs';
+import { Observable, take, takeUntil, tap } from 'rxjs';
 import { ProductsRequestService } from '../../../catalog/services/products-request/products-request.service';
 import { ActivatedRoute } from '@angular/router';
 import { DestroyService } from '../../../../services/destroy.service';

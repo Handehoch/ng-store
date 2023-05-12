@@ -4,13 +4,10 @@
     }
 
     &__list {
-        display: flex;
-        justify-content: space-between;
     }
 
     &__item {
         text-align: center;
-        border-radius: 20px;
         overflow: hidden;
         background-repeat: no-repeat;
         background-position: center;
@@ -19,21 +16,20 @@
     }
 
     &__item--small {
-        width: 180px;
+        text-align: center;
         height: 220px;
         border-radius: 20px;
     }
 
     &__item--large {
         text-align: center;
-        width: 180px;
-        height: 220px;
+        height: 330px;
         border-radius: 40px;
     }
 
     &__item:hover {
         cursor: pointer;
-        transform: scale(1.2);
+        transform: scale(1.1);
         transition: transform 0.2s linear;
     }
 
