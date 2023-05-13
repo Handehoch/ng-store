@@ -1,0 +1,35 @@
+<div class="footer">
+    <div class="footer__container">
+        <div class="footer__section footer__top">
+            <img src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e86ab4c21faa7bc0bd90dd_Logo.svg" alt="" class="footer__logo">
+            <p class="footer__text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae laudantium modi tempore.
+            </p>
+            <div class="footer__payments">
+                <h2 class="footer__payments-title">
+                    Опличивайте с помощью
+                </h2>
+                <tui-svg class="footer__payment-svg" *ngFor="let name of paymentIcons" src="tuiIcon{{name}}"></tui-svg>
+            </div>
+        </div>
+        <div class="footer__section footer__bottom">
+            <ul class="footer__links">
+                <li class="footer__item">
+                    <tui-svg class="footer__link-svg" [src]="'tuiIconBriefcaseLarge'"></tui-svg>
+                    <span class="footer__link">Become Seller</span>
+                </li>
+                <li class="footer__item">
+                    <tui-svg class="footer__link-svg" [src]="'tuiIconGiftLarge'"></tui-svg>
+                    <span class="footer__link">Gift Cards</span>
+                </li>
+                <li class="footer__item">
+                    <tui-svg class="footer__link-svg" [src]="'tuiIconHelpCircleLarge'"></tui-svg>
+                    <span class="footer__link">Help Center</span>
+                </li>
+            </ul>
+            <div class="footer__rights">
+                <span class="footer__rights-text">All Right reserved by Musemind | 2022</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -26,9 +26,12 @@ export class AppComponent {
             routerLink: 'home',
             fragment: 'categories',
         },
-        {
-            name: "what's new",
-            routerLink: 'news',
-        },
+    ];
+
+    protected readonly paymentIcons: string[] = [
+        'Mir',
+        'Mastercard',
+        'GooglePay',
+        'VisaMono',
     ];
 }

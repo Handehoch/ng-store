@@ -1,10 +1,10 @@
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
 import {
-    TuiRootModule,
-    TuiDialogModule,
-    TuiAlertModule,
     TUI_SANITIZER,
+    TuiAlertModule,
     TuiButtonModule,
+    TuiDialogModule,
+    TuiRootModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,8 +17,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { CartService } from './services/cart.service';
 import { HomeRoutingModule } from './children/home/home.routing-module';
 import { CatalogRoutingModule } from './children/catalog/catalog.routing-module';
+import { FooterComponent } from './components/footer/footer.component';
 
-const components: any = [AppComponent, HeaderComponent];
+const components: any = [AppComponent, HeaderComponent, FooterComponent];
 
 const routes: Routes = [
     {

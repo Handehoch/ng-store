@@ -7,7 +7,7 @@
         >
         </app-products-list>
     </div>
-    <div id="categories" *ngIf="categories$ | async as categories">
+    <div class="home__categories" id="categories" *ngIf="categories$ | async as categories">
         <app-categories-list
             [title]="'Shop our top categories'"
             [appearance]="'small'"
