@@ -1,13 +1,13 @@
 <div class="cart">
     <div class="cart__container" *ngIf="cartService.products$ | async as products">
         <ul class="cart__products" *ngIf="products.length > 0 else emptyCart">
-            <li class="cart__product" *ngFor="let product of products">
+            <li class="cart__product" *ngFor="let product of products; let i = index">
                 <img [src]="product.image" alt="" class="cart__image">
                 <div class="cart__info">
                     <h2 class="cart__title">{{ product.title }}</h2>
                     <span class="cart__price">{{ product.price }} $</span>
                 </div>
-                <div class="cart__remove" (click)="removeFromCart(product.id)"> 
+                <div class="cart__remove" (click)="removeFromCart(i)">
                     <tui-svg [src]="'tuiIconXSquareLarge'"></tui-svg>
                 </div>
             </li>

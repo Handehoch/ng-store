@@ -42,10 +42,8 @@ export class CartService {
         this._products$.next(this._cartProducts);
     }
 
-    public removeFromCart(id: number): void {
-        this._cartProducts = this._cartProducts.filter(
-            (cartProduct: IProduct) => id !== cartProduct.id
-        );
+    public removeFromCart(index: number): void {
+        this._cartProducts.splice(index, 1);
 
         if (this._cartProducts.length === 0) {
             this._storageService.removeFromStorage(this._cartProductsKey);

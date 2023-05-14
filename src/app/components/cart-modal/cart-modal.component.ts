@@ -9,7 +9,7 @@ import { CartService } from '../../services/cart.service';
 export class CartModalComponent {
     constructor(protected readonly cartService: CartService) {}
 
-    public removeFromCart(id: number): void {
-        this.cartService.removeFromCart(id);
+    public removeFromCart(index: number): void {
+        this.cartService.removeFromCart(index);
     }
 }
