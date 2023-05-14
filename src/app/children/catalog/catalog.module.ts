@@ -8,7 +8,6 @@ import {
     TuiMultiSelectModule,
 } from '@taiga-ui/kit';
 import { ProductsRequestService } from './services/products-request/products-request.service';
-import { SearchProductsService } from './services/search-products.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
@@ -57,7 +56,6 @@ const components: any[] = [
     ],
     providers: [
         ProductsRequestService,
-        SearchProductsService,
         {
             provide: 'API_URL',
             useValue: 'https://fakestoreapi.com',

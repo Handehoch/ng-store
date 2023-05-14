@@ -18,8 +18,14 @@ import { CartService } from './services/cart.service';
 import { HomeRoutingModule } from './children/home/home.routing-module';
 import { CatalogRoutingModule } from './children/catalog/catalog.routing-module';
 import { FooterComponent } from './components/footer/footer.component';
+import { CartModalComponent } from './components/cart-modal/cart-modal.component';
 
-const components: any = [AppComponent, HeaderComponent, FooterComponent];
+const components: any = [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    CartModalComponent,
+];
 
 const routes: Routes = [
     {

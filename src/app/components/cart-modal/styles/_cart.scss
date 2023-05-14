@@ -1,0 +1,31 @@
+.cart {
+    &__product {
+        display: flex;
+        align-items: center;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #e3e3e3;
+    }
+
+    &__product:not(:last-child) {
+        margin-bottom: 30px;
+    }
+
+    &__image {
+        max-width: 120px;
+        margin-right: 20px;
+    }
+
+    &__title {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    &__remove {
+        align-self: flex-start;
+        margin-left: auto;
+    }
+
+    &__remove:hover {
+        cursor: pointer;
+    }
+}

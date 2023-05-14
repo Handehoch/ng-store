@@ -5,9 +5,16 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class CartService {
+    public get products$(): Observable<IProduct[]> {
+        return this._products$.asObservable();
+    }
+
     public get productsAmount$(): Observable<number> {
         return this._productsAmount$.asObservable();
     }
+
+    private readonly _products$: BehaviorSubject<IProduct[]> =
+        new BehaviorSubject<IProduct[]>([]);
 
     private readonly _productsAmount$: BehaviorSubject<number> =
         new BehaviorSubject<number>(0);
@@ -19,7 +26,9 @@ export class CartService {
         this._cartProducts = JSON.parse(
             this._storageService.getFromStorage(this._cartProductsKey) ?? '[]'
         );
+
         this._productsAmount$.next(this._cartProducts.length);
+        this._products$.next(this._cartProducts);
     }
 
     public addToCart(product: IProduct): void {
@@ -30,6 +39,7 @@ export class CartService {
         );
 
         this._productsAmount$.next(this._cartProducts.length);
+        this._products$.next(this._cartProducts);
     }
 
     public removeFromCart(id: number): void {
@@ -39,14 +49,14 @@ export class CartService {
 
         if (this._cartProducts.length === 0) {
             this._storageService.removeFromStorage(this._cartProductsKey);
-            return;
+        } else {
+            this._storageService.addToStorage(
+                this._cartProductsKey,
+                JSON.stringify(this._cartProducts)
+            );
         }
 
-        this._storageService.addToStorage(
-            this._cartProductsKey,
-            JSON.stringify(this._cartProducts)
-        );
-
         this._productsAmount$.next(this._cartProducts.length);
+        this._products$.next(this._cartProducts);
     }
 }

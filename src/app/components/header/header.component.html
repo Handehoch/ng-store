@@ -12,7 +12,7 @@
             </ul>
         </nav>
         <div class="header__cart-container">
-            <div class="header__cart">
+            <div class="header__cart" (click)="showCartModal()">
                 <span class="header__cart-title">Корзина</span>
                 <tui-svg class="header__svg-cart" [src]="'tuiIconShoppingCart'"></tui-svg>
                 <div class="header__cart-amount">
