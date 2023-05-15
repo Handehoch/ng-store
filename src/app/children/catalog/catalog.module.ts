@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
     TuiButtonModule,
+    TuiHintModule,
     TuiLoaderModule,
     tuiLoaderOptionsProvider,
     TuiSvgModule,
@@ -48,6 +49,7 @@ const components: any[] = [
         TuiDataListWrapperModule,
         StringCutterPipe,
         TuiLoaderModule,
+        TuiHintModule,
     ],
     exports: [
         ProductsListComponent,

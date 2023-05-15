@@ -1,5 +1,6 @@
 <div class="cart">
     <div class="cart__container" *ngIf="cartService.products$ | async as products">
+        <h2 class="cart__sum">Итоговая стоимость {{ totalCartSum$ | async }} $</h2>
         <ul class="cart__products" *ngIf="products.length > 0 else emptyCart">
             <li class="cart__product" *ngFor="let product of products; let i = index">
                 <img [src]="product.image" alt="" class="cart__image">

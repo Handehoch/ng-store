@@ -31,7 +31,7 @@ export class CartService {
         this._products$.next(this._cartProducts);
     }
 
-    public addToCart(product: IProduct): void {
+    public add(product: IProduct): void {
         this._cartProducts.push(product);
         this._storageService.addToStorage(
             this._cartProductsKey,
@@ -42,7 +42,7 @@ export class CartService {
         this._products$.next(this._cartProducts);
     }
 
-    public removeFromCart(index: number): void {
+    public remove(index: number): void {
         this._cartProducts.splice(index, 1);
 
         if (this._cartProducts.length === 0) {

@@ -1,4 +1,9 @@
 .cart {
+    &__sum {
+        font-size: 24px;
+        margin-bottom: 40px;
+    }
+
     &__product {
         display: flex;
         align-items: center;

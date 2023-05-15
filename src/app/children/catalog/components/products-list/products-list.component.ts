@@ -10,6 +10,7 @@ import { ProductsFilterViewModel } from '../../view-models/products-filter.view-
 import { debounceTime, takeUntil, tap } from 'rxjs';
 import { DestroyService } from '../../../../services/destroy.service';
 import { IProductsFilter } from '../../interfaces/products-filter.interface';
+import { FavouriteService } from '../../../../services/favourite.service';
 
 @Component({
     selector: 'app-products-list',
@@ -30,7 +31,8 @@ export class ProductsListComponent implements OnChanges {
 
     constructor(
         private readonly _destroy$: DestroyService,
-        private readonly _cdr: ChangeDetectorRef
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _favouriteService: FavouriteService
     ) {}
 
     public ngOnChanges(): void {
@@ -80,6 +82,12 @@ export class ProductsListComponent implements OnChanges {
                     .toLowerCase()
                     .match(filter.name?.toLowerCase() ?? '');
             });
+        }
+
+        if (filter.byFavourite) {
+            filteredProducts = filteredProducts.filter(
+                (product: IProduct) => product.isFavourite
+            );
         }
 
         if (filter.categories?.length !== 0) {

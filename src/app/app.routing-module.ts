@@ -19,6 +19,7 @@ import { HomeRoutingModule } from './children/home/home.routing-module';
 import { CatalogRoutingModule } from './children/catalog/catalog.routing-module';
 import { FooterComponent } from './components/footer/footer.component';
 import { CartModalComponent } from './components/cart-modal/cart-modal.component';
+import { FavouriteService } from './services/favourite.service';
 
 const components: any = [
     AppComponent,
@@ -66,6 +67,7 @@ const routes: Routes = [
     providers: [
         StorageService,
         CartService,
+        FavouriteService,
         { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
     ],
     bootstrap: [AppComponent],

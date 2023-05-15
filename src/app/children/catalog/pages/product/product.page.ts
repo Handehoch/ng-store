@@ -74,6 +74,6 @@ export class ProductPage implements OnInit {
     }
 
     public addToCart(product: IProduct): void {
-        this._cartService.addToCart(product);
+        this._cartService.add(product);
     }
 }

@@ -3,6 +3,20 @@
     flex-direction: column;
     height: 100%;
 
+    &__container {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        height: 100%;
+    }
+
+    &__like {
+        position: absolute;
+        right: -20px;
+        top: -20px;
+        z-index: 101;
+    }
+
     &__image-container {
         height: 250px;
         margin-bottom: 30px;
