@@ -1,6 +1,7 @@
 # Description
 
 It's a simple online store based on [fakistoreapi](https://fakestoreapi.com/) and angular framework.
+Check application [here](https://ng-store-sable.vercel.app/home)!
 
 ## NgStore
 
