@@ -27,6 +27,9 @@ export class ProductsListComponent implements OnChanges {
     public products!: IProduct[];
 
     @Input()
+    public pagination: boolean = false;
+
+    @Input()
     public model!: ProductsFilterViewModel;
 
     constructor(

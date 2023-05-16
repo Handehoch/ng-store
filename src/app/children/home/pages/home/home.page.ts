@@ -5,7 +5,15 @@ import {
     OnInit,
 } from '@angular/core';
 import { IProduct } from '../../../catalog/interfaces/product.interface';
-import { Observable, take, takeUntil, tap } from 'rxjs';
+import {
+    interval,
+    Observable,
+    Subject,
+    switchMap,
+    take,
+    takeUntil,
+    tap,
+} from 'rxjs';
 import { ProductsRequestService } from '../../../catalog/services/products-request/products-request.service';
 import { ActivatedRoute } from '@angular/router';
 import { DestroyService } from '../../../../services/destroy.service';
@@ -32,12 +40,28 @@ export class HomePage implements OnInit, AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
+        let fragment: string | null = null;
+
+        const localTakeUntil$: Subject<void> = new Subject<void>();
+
         this._route.fragment
             .pipe(
                 takeUntil(this._destroy$),
-                tap((fragment: string | null) => {
+                switchMap((currentFragment: string | null) => {
+                    fragment = currentFragment;
+                    return interval(200).pipe(takeUntil(localTakeUntil$));
+                }),
+                tap(() => {
                     if (fragment) {
-                        document.getElementById(fragment)?.scrollIntoView();
+                        const categories: HTMLElement | null =
+                            document.getElementById(fragment);
+
+                        if (categories) {
+                            categories.scrollIntoView();
+                            localTakeUntil$.next();
+                        }
+                    } else {
+                        return localTakeUntil$.next();
                     }
                 })
             )
