@@ -32,6 +32,16 @@ export class FavouriteService {
         this._products$.next(this._favouriteProducts);
     }
 
+    public toggleFavourite(product: IProduct): void {
+        if (!product.isFavourite) {
+            this.add(product);
+            product.isFavourite = true;
+        } else {
+            this.remove(product.id);
+            product.isFavourite = false;
+        }
+    }
+
     public add(product: IProduct): void {
         this._favouriteProducts.push(product);
         this._storageService.addToStorage(

@@ -36,13 +36,7 @@ export class ProductCardComponent implements OnChanges {
     }
 
     public toggleFavourite(): void {
-        if (!this.product.isFavourite) {
-            this._favouriteService.add(this.product);
-            this.product.isFavourite = true;
-        } else {
-            this._favouriteService.remove(this.product.id);
-            this.product.isFavourite = false;
-        }
+        this._favouriteService.toggleFavourite(this.product);
     }
 
     public navigateToProduct(): void {

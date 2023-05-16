@@ -1,5 +1,8 @@
 <div class="product" *ngIf="product$ | async as product else loader">
     <div class="container product__container">
+        <div class="product__like" (click)="toggleFavourite()">
+            <tui-svg [src]="'tuiIconHeartLarge'" [ngClass]="product.isFavourite ? 'icon-pink' : 'icon-black'"></tui-svg>
+        </div>
         <img class="product__image" [src]="product.image" alt="">
         <div class="product__info">
             <div class="product__info-block">

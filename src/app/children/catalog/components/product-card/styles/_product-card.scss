@@ -17,6 +17,10 @@
         z-index: 101;
     }
 
+    &__like:hover {
+        cursor: pointer;
+    }
+
     &__image-container {
         height: 250px;
         margin-bottom: 30px;

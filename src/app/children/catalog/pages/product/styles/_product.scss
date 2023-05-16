@@ -1,7 +1,19 @@
 .product {
     padding-top: 20px;
+
     &__container {
         display: flex;
+        position: relative;
+    }
+
+    &__like {
+        position: absolute;
+        right: -20px;
+        top: -20px;
+    }
+
+    &__like:hover {
+        cursor: pointer;
     }
 
     &__image {
