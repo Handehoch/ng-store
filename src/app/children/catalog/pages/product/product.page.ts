@@ -3,7 +3,6 @@ import {
     Component,
     ElementRef,
     Inject,
-    OnChanges,
     OnInit,
     ViewChild,
 } from '@angular/core';
@@ -23,7 +22,7 @@ import { FavouriteService } from '../../../../services/favourite.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [DestroyService, StringCutterPipe],
 })
-export class ProductPage implements OnInit, OnChanges {
+export class ProductPage implements OnInit {
     @ViewChild('description')
     public readonly description!: ElementRef<HTMLParagraphElement>;
 
@@ -65,10 +64,6 @@ export class ProductPage implements OnInit, OnChanges {
                     return product;
                 })
             );
-    }
-
-    public ngOnChanges(): void {
-        this.product$.pipe(take(1)).subscribe();
     }
 
     public toggleFavourite(): void {
