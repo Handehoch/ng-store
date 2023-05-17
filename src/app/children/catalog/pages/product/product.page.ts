@@ -11,7 +11,7 @@ import { DestroyService } from '../../../../services/destroy.service';
 import { ProductsRequestService } from '../../services/products-request/products-request.service';
 import { IProduct } from '../../interfaces/product.interface';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Observable, take, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, take, tap } from 'rxjs';
 import { StringCutterPipe } from '../../pipes/string-cutter/string-cutter.pipe';
 import { TuiDialogService } from '@taiga-ui/core';
 import { CartService } from '../../../../services/cart.service';
@@ -46,32 +46,32 @@ export class ProductPage implements OnInit, OnChanges {
     ) {}
 
     public ngOnInit(): void {
-        this.product$ = this._productsRequestService.getProductById(
-            parseInt(this._route.snapshot.url[1].path)
-        );
-    }
-
-    public ngOnChanges(): void {
         const products: IProduct[] = this._favouriteService.get();
 
-        this.product$
+        this.product$ = this._productsRequestService
+            .getProductById(parseInt(this._route.snapshot.url[1].path))
             .pipe(
                 take(1),
-                tap((product: IProduct) => {
+                map((product: IProduct) => {
                     if (
                         products.some(
                             (product: IProduct) => product.id === product.id
                         )
                     ) {
                         product.isFavourite = true;
+                        return product;
                     }
+
+                    return product;
                 })
-            )
-            .subscribe();
+            );
+    }
+
+    public ngOnChanges(): void {
+        this.product$.pipe(take(1)).subscribe();
     }
 
     public toggleFavourite(): void {
-        debugger;
         this.product$
             .pipe(
                 take(1),
